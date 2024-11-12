@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
+import { useUserContext } from "../context/UserContext";
+import { Navigate } from "react-router-dom";
 
 const RegisterPage = () => {
+  const { token } = useUserContext();
+  if (token) return <Navigate to="/register" />;
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');

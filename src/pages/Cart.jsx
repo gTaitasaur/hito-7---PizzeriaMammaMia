@@ -1,7 +1,9 @@
 import React from 'react';
 import { useCart } from '../context/CartContext';
+import { useUserContext } from "../context/UserContext";
 
 const Cart = () => {
+  const { token } = useUserContext();
   const { cartItems, incrementQuantity, decrementQuantity, totalAmount } = useCart();
 
   return (
@@ -24,7 +26,7 @@ const Cart = () => {
       )}
       <hr />
       <h2>Total: ${totalAmount.toFixed(2)}</h2>
-      <button>Pagar</button>
+      {token && <button>Pagar</button>}
     </div>
   );
 };

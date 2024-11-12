@@ -1,5 +1,6 @@
 import React from 'react';
 import { useCart } from '../context/CartContext';
+import { Link } from "react-router-dom";
 
 const CardPizza = ({ pizza }) => {
   const { addToCart } = useCart();
@@ -11,6 +12,9 @@ const CardPizza = ({ pizza }) => {
       <p><b>Descripción: </b>{pizza.desc}</p>
       <p><b>Ingredientes: </b>{pizza.ingredients.join(', ')}</p>
       <p><b>Precio:</b> ${pizza.price}</p>
+      <Link to={`/pizza/${pizza.id}`}>
+          <button>Ver Detalles</button>
+      </Link>
       <button onClick={() => addToCart(pizza)}>Añadir al Carrito</button>
     </div>
   );
